@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>markdown_sample.txt</file>
+        <file>markdown_base.txt</file>
+    </qresource>
+</RCC>
