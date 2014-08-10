@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "smp_parse.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent)
@@ -54,32 +55,15 @@ void MainWindow::onTextChanged()
     // Save current scroll position
     int previousScrollPosition = m_WebView->page()->mainFrame()->scrollBarValue(Qt::Vertical);
 
-    // Get source markdown text
-    QByteArray plainText = m_TextBox->toPlainText().toUtf8();
-
-    // Source markdown size
-    int plainTextSize = plainText.size();
-
-    // Build a document
-    Document * doc = mkd_string(plainText.constData(), plainTextSize, 0);
-
-    // Compile the document
-    mkd_compile(doc, 0);
-
-    // Get the generated HTML
-    char * outputText;
-    int outputSize = mkd_document(doc, &outputText);
-
-    // Build the output string
-    QString outputGood = QString::fromLocal8Bit(outputText, outputSize);
+    // Parse the markdown
+    QString output = parseMarkdown(m_TextBox->toPlainText());
 
     // Set the HTML to the WebView
-    m_WebView->setHtml(outputGood);
+    m_WebView->setHtml(output);
 
     // Restore scroll position
     m_WebView->page()->mainFrame()->setScrollBarValue(Qt::Vertical, previousScrollPosition);
 
     // Cleanup temporary structures
     mkd_cleanup(doc);
-
 }

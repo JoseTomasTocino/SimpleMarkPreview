@@ -6,11 +6,8 @@
 #include <QTextEdit>
 #include <QWebView>
 
-#include <markdown.h>
-
-
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QWidget
@@ -28,8 +25,6 @@ private:
     QHBoxLayout * m_MainLayout;
     QTextEdit * m_TextBox;
     QWebView * m_WebView;
-
-    QByteArray m_MarkdownBase;
 };
 
 #endif // MAINWINDOW_H
