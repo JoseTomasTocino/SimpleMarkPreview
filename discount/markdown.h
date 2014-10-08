@@ -1,12 +1,7 @@
 #ifndef _MARKDOWN_D
 #define _MARKDOWN_D
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include "cstring.h"
-
 
 /* reference-style links (and images) are stored in an array
  * of footnotes.
@@ -219,9 +214,5 @@ extern void __mkd_enqueue(Document*, Cstring *);
 extern void __mkd_header_dle(Line *);
 
 extern int  __mkd_io_strget(struct string_stream *);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif/*_MARKDOWN_D*/
