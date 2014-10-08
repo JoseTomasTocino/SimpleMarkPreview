@@ -1,7 +1,0 @@
-# A First Level Header
-
-I get 10 times more traffic from [Google](http://google.com/ "Google") than from
-[Yahoo](http://search.yahoo.com/ "Yahoo Search") or [MSN](http://search.msn.com/ "MSN Search").
-
-I start my morning with a cup of coffee and
-[The New York Times](http://www.nytimes.com/).
