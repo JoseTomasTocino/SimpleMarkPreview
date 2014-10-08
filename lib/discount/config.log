@@ -9,20 +9,28 @@ checking for "volatile" keyword
 checking for "const" keyword
 Checking for "inline" keyword
 defining WORD & DWORD scalar types
-ngc9088.c: En la función ‘main’:
-ngc9088.c:28:2: aviso: declaración implícita incompatible de la función interna ‘exit’ [activado por defecto]
+ngc4250.c: In function ‘main’:
+ngc4250.c:28:2: warning: incompatible implicit declaration of built-in function ‘exit’ [enabled by default]
+  exit(1);
+  ^
 looking for header libgen.h
 looking for header pwd.h
 looking for the getpwuid function
 looking for the srandom function
 looking for the bzero function
-ngc9088.c: En la función ‘main’:
-ngc9088.c:4:5: aviso: declaración implícita incompatible de la función interna ‘bzero’ [activado por defecto]
+ngc4250.c: In function ‘main’:
+ngc4250.c:4:5: warning: incompatible implicit declaration of built-in function ‘bzero’ [enabled by default]
+     bzero((char*)0,0);
+     ^
 looking for the random function
 looking for the strcasecmp function
-ngc9088.c:1:6: aviso: tipos en conflicto para la función interna ‘strcasecmp’ [activado por defecto]
+ngc4250.c:1:6: warning: conflicting types for built-in function ‘strcasecmp’ [enabled by default]
+ void strcasecmp();
+      ^
 looking for the strncasecmp function
-ngc9088.c:1:6: aviso: tipos en conflicto para la función interna ‘strncasecmp’ [activado por defecto]
+ngc4250.c:1:6: warning: conflicting types for built-in function ‘strncasecmp’ [enabled by default]
+ void strncasecmp();
+      ^
 looking for the fchdir function
 looking for header malloc.h
 find is /usr/bin/find

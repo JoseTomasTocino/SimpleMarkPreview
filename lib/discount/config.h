@@ -1,6 +1,6 @@
 /*
- * configuration for markdown, generated mié oct  8 11:39:41 CEST 2014
- * by jose@linux-je
+ * configuration for markdown, generated mié oct  8 15:38:36 CEST 2014
+ * by jose@desktop
  */
 #ifndef __AC_MARKDOWN_D
 #define __AC_MARKDOWN_D 1
@@ -10,7 +10,7 @@
 #define USE_DISCOUNT_DL 1
 #define while(x) while( (x) != 0 )
 #define if(x) if( (x) != 0 )
-#define DWORD unsigned long
+#define DWORD unsigned int
 #define WORD unsigned short
 #define BYTE unsigned char
 #define HAVE_BASENAME 1

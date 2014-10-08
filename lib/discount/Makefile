@@ -1,4 +1,4 @@
-CC=cc -I.
+CC=cc -Wno-return-type -Wno-implicit-int -I.
 LFLAGS=-L.
 CFLAGS=-g
 AR=/usr/bin/ar
@@ -32,11 +32,11 @@ install.everything: install install.samples install.man
 
 install.samples: $(SAMPLE_PGMS) install $(DESTDIR)$(BINDIR)
 	/usr/bin/install -s -m 755 $(SAMPLE_PGMS) $(DESTDIR)$(BINDIR)
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(MANDIR)/man1
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(MANDIR)/man1
 	/usr/bin/install -m 444 theme.1 makepage.1 mkd2html.1 $(DESTDIR)$(MANDIR)/man1
 
 install.man:
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(MANDIR)/man3
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(MANDIR)/man3
 	/usr/bin/install -m 444 $(MAN3PAGES) $(DESTDIR)$(MANDIR)/man3
 	for x in mkd_line mkd_generateline; do \
 	    ( echo '.\"' ; echo ".so man3/mkd-line.3" ) > $(DESTDIR)$(MANDIR)/man3/$$x.3;\
@@ -47,21 +47,21 @@ install.man:
 	for x in mkd_compile mkd_css mkd_generatecss mkd_generatehtml mkd_cleanup mkd_doc_title mkd_doc_author mkd_doc_date; do \
 	    ( echo '.\"' ; echo ".so man3/mkd-functions.3" ) > $(DESTDIR)$(MANDIR)/man3/$$x.3; \
 	done
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(MANDIR)/man7
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(MANDIR)/man7
 	/usr/bin/install -m 444 markdown.7 mkd-extensions.7 $(DESTDIR)$(MANDIR)/man7
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(MANDIR)/man1
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(MANDIR)/man1
 	/usr/bin/install -m 444 markdown.1 $(DESTDIR)$(MANDIR)/man1
 
 install.everything: install install.man
 
 $(DESTDIR)$(BINDIR):
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(BINDIR)
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(BINDIR)
 
 $(DESTDIR)$(INCDIR):
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(INCDIR)
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(INCDIR)
 
 $(DESTDIR)$(LIBDIR):
-	/home/jose/Projects/SimpleMarkPreview/discount/config.md $(DESTDIR)$(LIBDIR)
+	/home/jose/Dropbox/Programming/c++/SimpleMarkPreview/lib/discount/config.md $(DESTDIR)$(LIBDIR)
 
 version.o: version.c VERSION
 	$(CC) -DVERSION=\"`cat VERSION`\" -c version.c

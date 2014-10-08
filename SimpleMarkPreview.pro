@@ -9,7 +9,7 @@ QT += core gui webkit
 
 CONFIG += debug
 
-#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
 TARGET = SimpleMarkPreview
 TEMPLATE = app

@@ -9,7 +9,7 @@ extern "C" {
 
 typedef void MMIOT;
 
-typedef unsigned long mkd_flag_t;
+typedef unsigned int mkd_flag_t;
 
 /* line builder for markdown()
  */
