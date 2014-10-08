@@ -2,5 +2,10 @@
     <qresource prefix="/">
         <file>markdown_sample.txt</file>
         <file>markdown_base.txt</file>
+        <file>images/new.png</file>
+        <file>images/open.png</file>
+        <file>images/save.png</file>
+        <file>images/export.png</file>
+        <file>images/exit.png</file>
     </qresource>
 </RCC>
