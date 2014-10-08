@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT += core gui webkit
-QT += webkitwidgets
+#QT += webkitwidgets
 
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

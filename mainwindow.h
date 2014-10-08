@@ -1,10 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtWebKitWidgets>
 #include <QHBoxLayout>
 #include <QTextEdit>
 #include <QWebView>
+
+#if QT_VERSION >= 0x050000
+// #include <QtWidgets/QDockWidget>
+#include <QtWebKitWidgets>
+#else
+#include <QtGui/QDockWidget>
+#endif
 
 namespace Ui {
     class MainWindow;

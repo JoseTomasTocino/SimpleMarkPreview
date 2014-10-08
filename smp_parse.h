@@ -1,18 +1,24 @@
 #ifndef SMP_PARSE_H
 #define SMP_PARSE_H
 
-#include <markdown.h>
+#include <QString>
+#include <QByteArray>
+#include <QDebug>
 
-QString parseMarkdown(QString & source)
+extern "C"
+{
+    #include <markdown.h>
+}
+
+QString parseMarkdown (QString source)
 {
     // Get source markdown text
     QByteArray plainText = source.toUtf8();
-
-    // Source markdown size
     int plainTextSize = plainText.size();
+    const char * plainTextData = plainText.constData();
 
     // Build a document
-    Document * doc = mkd_string(plainText.constData(), plainTextSize, 0);
+    Document * doc = mkd_string (plainTextData, plainTextSize, 0);
 
     // Compile the document
     mkd_compile(doc, 0);
@@ -21,8 +27,13 @@ QString parseMarkdown(QString & source)
     char * outputText;
     int outputSize = mkd_document(doc, &outputText);
 
-    // Return the output string
-    return QString::fromLocal8Bit(outputText, outputSize);
+    // Build the output string
+    QString result = QString::fromUtf8(outputText, outputSize);
+
+    // Cleanup temporary structures
+    mkd_cleanup(doc);
+
+    return result;
 }
 
 #endif // SMP_PARSE_H

@@ -1,3 +1,8 @@
+#include <QFile>
+#include <QSplitter>
+#include <QWebFrame>
+#include <QDebug>
+
 #include "mainwindow.h"
 #include "smp_parse.h"
 
@@ -17,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Create the rendered view
     m_WebView = new QWebView();
-    m_WebView->page()->settings()->setUserStyleSheetUrl(QUrl("qrc:///markdown_base.txt"));
+    m_WebView->page()->settings()
+        ->setUserStyleSheetUrl(QUrl("qrc:///markdown_base.txt"));
 
     // Place the two widgets in a splitted view
     QSplitter * splitter = new QSplitter(this);
@@ -53,7 +59,8 @@ MainWindow::~MainWindow()
 void MainWindow::onTextChanged()
 {
     // Save current scroll position
-    int previousScrollPosition = m_WebView->page()->mainFrame()->scrollBarValue(Qt::Vertical);
+    int previousScrollPosition = m_WebView->page()->mainFrame()
+        ->scrollBarValue(Qt::Vertical);
 
     // Parse the markdown
     QString output = parseMarkdown(m_TextBox->toPlainText());
@@ -62,8 +69,6 @@ void MainWindow::onTextChanged()
     m_WebView->setHtml(output);
 
     // Restore scroll position
-    m_WebView->page()->mainFrame()->setScrollBarValue(Qt::Vertical, previousScrollPosition);
-
-    // Cleanup temporary structures
-    mkd_cleanup(doc);
+    m_WebView->page()->mainFrame()
+        ->setScrollBarValue(Qt::Vertical, previousScrollPosition);
 }
