@@ -77,10 +77,15 @@ MainWindow::MainWindow(QWidget *parent) :
     m_TextBox->setAcceptRichText(false);
     m_TextBox->setText(markdownSampleText.readAll());
 
+    // Manually open the base CSS file and convert the contents to Base64
+    QFile sourceCss(":/markdown_base.txt");
+    sourceCss.open(QIODevice::ReadOnly);
+    QByteArray sourceCssBase64 = sourceCss.readAll().toBase64();
+
     // Create the rendered view
     m_WebView = new QWebView();
     m_WebView->page()->settings()
-        ->setUserStyleSheetUrl(QUrl("qrc:///markdown_base.txt"));
+        ->setUserStyleSheetUrl(QString("data:text/css;charset=utf-8;base64,") + QString::fromUtf8(sourceCssBase64));
 
     // Place the two widgets in a splitted view
     QSplitter * splitter = new QSplitter(this);
