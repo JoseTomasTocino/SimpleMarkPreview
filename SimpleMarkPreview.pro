@@ -4,38 +4,34 @@
 #
 #-------------------------------------------------
 
-QT += core gui webkit
-#QT += webkitwidgets
-
 CONFIG += debug
 
+QT += core gui webkit
+
+# For Qt5, naming changes
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
+
+QMAKE_CXXFLAGS += -fno-strict-aliasing -Wno-unused-parameter
 
 TARGET = SimpleMarkPreview
 TEMPLATE = app
 
 SOURCES += src/main.cpp\
-           src/mainwindow.cpp
+           src/mainwindow.cpp \
+    lib/cpp-markdown/markdown-tokens.cpp \
+    lib/cpp-markdown/markdown.cpp
 
 HEADERS  += include/mainwindow.h \
-            include/smp_parse.h
+            include/smp_parse.h \
+    lib/cpp-markdown/markdown.h \
+    lib/cpp-markdown/markdown-tokens.h
 
 FORMS    +=
 
 INCLUDEPATH += include
+INCLUDEPATH += lib/cpp-markdown
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/discount/release/ -lmarkdown
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/discount/debug/ -lmarkdown
-else:unix: LIBS += -L$$PWD/lib/discount/ -lmarkdown
-
-INCLUDEPATH += $$PWD/lib/discount
-DEPENDPATH += $$PWD/lib/discount
-
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/discount/release/libmarkdown.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/discount/debug/libmarkdown.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/discount/release/markdown.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/discount/debug/markdown.lib
-else:unix: PRE_TARGETDEPS += $$PWD/lib/discount/libmarkdown.a
+unix: LIBS += -lboost_regex
 
 RESOURCES += \
     resources/resources.qrc
