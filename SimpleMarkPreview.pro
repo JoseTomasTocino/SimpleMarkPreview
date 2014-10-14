@@ -4,14 +4,12 @@
 #
 #-------------------------------------------------
 
-CONFIG += debug
-
 QT += core gui webkit
 
 # For Qt5, naming changes
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
-QMAKE_CXXFLAGS += -fno-strict-aliasing -Wno-unused-parameter
+unix: QMAKE_CXXFLAGS += -fno-strict-aliasing -Wno-unused-parameter
 
 TARGET = SimpleMarkPreview
 TEMPLATE = app
@@ -31,6 +29,12 @@ FORMS    +=
 INCLUDEPATH += include
 INCLUDEPATH += lib/cpp-markdown
 
+win32: INCLUDEPATH += E:/boost
+win32: DEPENDPATH += E:/boost
+win32: LIBS += -LE:/boost/stage/lib/
+win32:debug:-llibboost_regex-vc120-mt-gd-1_56
+win32:release:-llibboost_regex-vc120-mt-1_56
+
 unix: LIBS += -lboost_regex
 
 RESOURCES += \
@@ -39,3 +43,5 @@ RESOURCES += \
 OTHER_FILES += \
     resources/markdown_sample.txt \
     resources/markdown_base.txt
+
+

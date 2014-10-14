@@ -13,7 +13,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow (parent)
 {
-    this->resize(1024, 600);
+    this->resize(1200, 800);
 
     // Show some sample markdown
     QFile markdownSampleText(":/markdown_sample.txt");
@@ -39,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_ActionSave, SIGNAL(triggered()), this, SLOT(onActionSave()));
 
     m_ActionExport = new QAction(QIcon(":/images/export.png"), tr("&Export HTML"), this);
-    // m_ActionExport->setShortcuts(QKeySequence::New);
     m_ActionExport->setStatusTip(tr("Export HTML"));
     connect(m_ActionExport, SIGNAL(triggered()), this, SLOT(onActionExport()));
 
@@ -76,6 +75,11 @@ MainWindow::MainWindow(QWidget *parent) :
     m_TextBox = new QTextEdit();
     m_TextBox->setAcceptRichText(false);
     m_TextBox->setText(markdownSampleText.readAll());
+
+    QFont font("Consolas");
+    font.setPointSize(11);
+    font.setStyleHint(QFont::TypeWriter);
+    m_TextBox->setFont(font);
 
     // Manually open the base CSS file and convert the contents to Base64
     QFile sourceCss(":/markdown_base.txt");
