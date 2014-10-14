@@ -2,6 +2,7 @@
 #define SMP_PARSE_H
 
 #include <iostream>
+#include <sstream>
 
 #include <QString>
 #include <QByteArray>
