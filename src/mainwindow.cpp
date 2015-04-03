@@ -234,6 +234,9 @@ void MainWindow::onTextChanged()
     // Set the HTML to the WebView
     m_WebView->setHtml(m_GeneratedMarkdown);
 
+    qDebug() << "Previous scroll position:" << previousScrollPosition << endl
+             << "Max scroll position:" << m_WebView->page()->mainFrame()->scrollBarMaximum(Qt::Vertical);
+
     // Restore scroll position
     m_WebView->page()->mainFrame()
         ->setScrollBarValue(Qt::Vertical, previousScrollPosition);

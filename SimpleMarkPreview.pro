@@ -32,8 +32,8 @@ INCLUDEPATH += lib/cpp-markdown
 win32: INCLUDEPATH += E:/boost
 win32: DEPENDPATH += E:/boost
 win32: LIBS += -LE:/boost/stage/lib/
-win32:debug:-llibboost_regex-vc120-mt-gd-1_56
-win32:release:-llibboost_regex-vc120-mt-1_56
+#win32:debug:-llibboost_regex-vc120-mt-gd-1_56
+#win32:release:-llibboost_regex-vc120-mt-1_56
 
 unix: LIBS += -lboost_regex
 

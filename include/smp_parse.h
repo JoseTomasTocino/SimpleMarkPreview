@@ -24,6 +24,8 @@ QString parseMarkdown (QString source)
     // Build the target stream
     std::stringstream ostr_stream;
 
+    d.writeTokens(std::cout);
+
     // Populate the target stream with the generated HTML
     d.write(ostr_stream);
 
